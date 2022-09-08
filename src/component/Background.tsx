@@ -1,22 +1,12 @@
-import Konva from "konva";
 import React, { useEffect } from "react";
-import canvasStore, { ACTIONS } from "../stores/Canvas";
 import ImageViewer from "./ImageViewer";
 
 interface IProps {
-  // children: React.ReactNode;
+  width: number,
+  height: number
 }
 
-const Background: React.FC<IProps> = (props) => {
-  const WIDTH = 400;
-  const HEIGHT = 485;
-  useEffect(() => {
-    canvasStore.dispatch(ACTIONS.RENDER_STAGE, {
-      container: "container",
-      width: 180,
-      height: 250,
-    });
-  }, []);
+const Background: React.FC<IProps> = ({ height, width }) => {
   return (
     <div
       id="product-background"
@@ -26,8 +16,8 @@ const Background: React.FC<IProps> = (props) => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'contain',
         backgroundPosition: 'center',
-        width: WIDTH,
-        height: HEIGHT,
+        width,
+        height,
       }}
     >
       <ImageViewer imageBuffer={""}/>
